@@ -1,5 +1,4 @@
 import "./styles.css";
-
 import { Task, List, Project } from "./items.js";
 import { renderDOM } from "./dom.js";
 
@@ -13,4 +12,4 @@ projectList.addItem(defaultProject);
 
 taskList.addItem(defaultTask);
 
-renderDOM();
+// renderDOM();
