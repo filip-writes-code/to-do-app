@@ -32,12 +32,15 @@ html {
     margin-bottom: 8px;
 }
 
-.nav-bar, .content {
+.nav-bar, .content-wrapper {
     padding: 20px;
 }
 
-.content {
+.content-wrapper {
     background-color: #e9ecef;
+}
+
+.content {
     display: flex;
     flex-direction: column;
 }
