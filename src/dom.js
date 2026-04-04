@@ -1,6 +1,7 @@
 import { projectList, taskList } from "./index.js";
 
 const contentDiv = document.querySelector('.content');
+const projectContentDiv = document.querySelector('.projects-content');
 
 const createTaskWrapperLayout = (task) => {
     const {
@@ -58,8 +59,22 @@ const createTaskWrapperLayout = (task) => {
     return taskWrapper;
 }
 
+const createProjectWrapper = (projectObj) => {
+    const {
+        id,
+        title,
+        completed} = projectObj;
+    const projectWrapper = document.createElement('button');
+    projectWrapper.textContent = title;
+    return projectWrapper;
+}
+
 const addTaskToDom = (taskObj) => {
     contentDiv.appendChild(createTaskWrapperLayout(taskObj));
+}
+
+const addProjectToDom = (projectObj) => {
+    projectContentDiv.appendChild(createProjectWrapper(projectObj));
 }
 
 export const renderTasks = () => {
@@ -67,4 +82,16 @@ export const renderTasks = () => {
     taskList.items.forEach(task => {
         addTaskToDom(task)
     });
+}
+
+export const renderProjects = () => {
+    projectContentDiv.innerHTML = '';
+    projectList.items.forEach(project => {
+        addProjectToDom(project);
+    })
+}
+
+export const render = () => {
+    renderTasks();
+    renderProjects();
 }

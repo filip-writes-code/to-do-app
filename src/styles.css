@@ -25,11 +25,16 @@ html {
 .menu-section {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0.5rem;
 }
 
 .menu-section h3 {
     margin-bottom: 8px;
+}
+
+.projects-content button {
+    all: unset;
+    cursor: pointer;
 }
 
 .nav-bar, .content-wrapper {
