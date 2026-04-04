@@ -2,10 +2,19 @@ import { projectList, taskList } from "./index.js";
 
 const contentDiv = document.querySelector('.content');
 
-export const createTaskWrapperLayout = () => {
+const createTaskWrapperLayout = (task) => {
+    const {
+        id,
+        title,
+        description,
+        dueDate,
+        priority,
+        projectId,
+        completed} = task;
     //create task-wrapper div
     const taskWrapper = document.createElement('div')
     taskWrapper.classList.add('task-wrapper');
+    taskWrapper.dataset.id = id;
     //create all divs
     const taskDiv = document.createElement('div')
     const titleDiv = document.createElement('div')
@@ -27,6 +36,10 @@ export const createTaskWrapperLayout = () => {
 
     const deleteButton = document.createElement('button');
     deleteButton.textContent = "Delete";
+    //populate text
+    titleDiv.innerText = title;
+    dueDateDiv.innerText = dueDate;
+    priorityDiv.innerText = priority;
     //assemble the task card
     taskWrapper.appendChild(taskDiv);
     taskDiv.appendChild(checkbox);
@@ -37,5 +50,14 @@ export const createTaskWrapperLayout = () => {
     actionsDiv.appendChild(editButton);
     actionsDiv.appendChild(deleteButton);
 
+    if (completed) {
+        titleDiv.classList.add('completed');
+        checkbox.checked = true;
+    }
+
     return taskWrapper;
+}
+
+export const addTaskToDom = (taskObj) => {
+    contentDiv.appendChild(createTaskWrapperLayout(taskObj));
 }
