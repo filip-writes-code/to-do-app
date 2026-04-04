@@ -1,6 +1,6 @@
 import "./styles.css";
 import { Task, List, Project } from "./items.js";
-import { addTaskToDom } from "./dom.js";
+import { renderTasks } from "./dom.js";
 
 export const projectList = new List ();
 export const taskList = new List();
@@ -10,4 +10,4 @@ const defaultTask = new Task('Welcome to TaskMaster', 'Hello there', '04/11/2026
 
 projectList.addItem(defaultProject);
 taskList.addItem(defaultTask);
-addTaskToDom(taskList.items[0]);
+renderTasks();

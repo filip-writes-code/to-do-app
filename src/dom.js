@@ -58,6 +58,13 @@ const createTaskWrapperLayout = (task) => {
     return taskWrapper;
 }
 
-export const addTaskToDom = (taskObj) => {
+const addTaskToDom = (taskObj) => {
     contentDiv.appendChild(createTaskWrapperLayout(taskObj));
+}
+
+export const renderTasks = () => {
+    contentDiv.innerHTML = '';
+    taskList.items.forEach(task => {
+        addTaskToDom(task)
+    });
 }
