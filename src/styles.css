@@ -15,10 +15,11 @@ html {
 }
 
 .nav-bar {
-    background-color: #2C3639;
-    color: white;
+    background-color: #f8f9fa;
     display: flex;
     flex-direction: column;
+    border-right: 0.5px solid #dee2e6;
+    gap: 40px;
 }
 
 .menu-section {
@@ -33,23 +34,35 @@ html {
 
 .nav-bar, .content {
     padding: 20px;
-    gap: 40px;
-
 }
 
 .content {
-    background-color: #DCD7C9;
+    background-color: #e9ecef;
     display: flex;
     flex-direction: column;
-    padding-left: 50px;
-    padding-top: 50px;
 }
 
 .task {
+    display: grid;
+    grid-template-columns: 20px minmax(100px, 5fr) 1fr 1fr 100px;
+    background-color: #f8f9fa   ;
+    border-bottom: 0.5px solid #dee2e6;
+    padding: 10px 12px;
+    gap: 16px;
+    align-items: center;
+}
+
+.task .priority,
+.task .due-date {
+    justify-self: end;
+}
+
+.task .actions {
+    justify-self: end;
     display: flex;
-    flex-direction: column;
-    background-color: #A27B5C;
-    border-radius: 20px;
-    padding: 20px;
-    width: 300px;
+    gap: 4px;
+}
+
+.actions button {
+    padding: 0 6px;
 }
