@@ -42,14 +42,22 @@ html {
     flex-direction: column;
 }
 
+.task-wrapper{
+    background-color: #f8f9fa;
+    border-bottom: 0.5px solid #dee2e6;
+}
+
 .task {
     display: grid;
     grid-template-columns: 20px minmax(100px, 5fr) 1fr 1fr 100px;
-    background-color: #f8f9fa   ;
-    border-bottom: 0.5px solid #dee2e6;
     padding: 10px 12px;
     gap: 16px;
     align-items: center;
+}
+
+.task-wrapper .description {
+    background-color: #f8f9fa   ;
+    padding: 16px 50px;
 }
 
 .task .priority,
