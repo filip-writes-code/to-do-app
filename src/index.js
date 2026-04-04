@@ -1,6 +1,6 @@
 import "./styles.css";
 import { Task, List, Project } from "./items.js";
-import { renderDOM } from "./dom.js";
+import { createTaskWrapperLayout } from "./dom.js";
 
 export const projectList = new List ();
 export const taskList = new List();
@@ -12,4 +12,4 @@ projectList.addItem(defaultProject);
 
 taskList.addItem(defaultTask);
 
-// renderDOM();
+createTaskWrapperLayout();
