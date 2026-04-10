@@ -24,3 +24,24 @@ addProjectForm.addEventListener('submit', (e) => {
     addProjectTitle.value = null;
     render();
 });
+
+//Add-Task form
+const addTaskForm = document.getElementById("add-task");
+//prevent default and fire formdata event
+addTaskForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    new FormData(addTaskForm);
+})
+
+addTaskForm.addEventListener("formdata", (e) => {
+    const data = Object.fromEntries(e.formData);
+    const {
+        "add-task-title" : addTaskTitle,
+        "add-date": addDate,
+        "add-priority" : addPriority,
+    } = data;
+    const taskToAdd = new Task(addTaskTitle, null , addDate, addPriority);
+    taskList.addItem(taskToAdd);
+    addTaskForm.reset();
+    render();
+})
