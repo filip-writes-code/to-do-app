@@ -37,6 +37,12 @@ html {
     cursor: pointer;
 }
 
+.add-project form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .nav-bar, .content-wrapper {
     padding: 20px;
 }
@@ -79,8 +85,14 @@ html {
     gap: 4px;
 }
 
-button {
+.actions button {
     padding: 0 7px;
+}
+
+input,
+select,
+button {
+    padding: 4px;
 }
 
 .completed {
@@ -90,11 +102,12 @@ button {
 .label-group {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
 }
 
 .add-task-section {
     display: flex;
-    align-items: flex-end;
+    align-items:flex-end ;
     justify-content: center;
     gap: 20px;
     margin-top: 40px;
