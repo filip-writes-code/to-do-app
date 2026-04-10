@@ -39,8 +39,9 @@ addTaskForm.addEventListener("formdata", (e) => {
         "add-task-title" : addTaskTitle,
         "add-date": addDate,
         "add-priority" : addPriority,
+        "project-id" : projectId,
     } = data;
-    const taskToAdd = new Task(addTaskTitle, null , addDate, addPriority);
+    const taskToAdd = new Task(addTaskTitle, null , addDate, addPriority, projectId);
     taskList.addItem(taskToAdd);
     addTaskForm.reset();
     render();
