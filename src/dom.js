@@ -35,9 +35,11 @@ const createTaskWrapperLayout = (task) => {
 
     const editButton = document.createElement('button');
     editButton.textContent = "Edit";
+    editButton.id = "edit"
 
     const deleteButton = document.createElement('button');
     deleteButton.textContent = "Delete";
+    deleteButton.id = "delete"
     //populate text
     titleDiv.innerText = title;
     dueDateDiv.innerText = dueDate;
@@ -66,6 +68,7 @@ const createProjectWrapper = (projectObj) => {
         title,
         completed} = projectObj;
     const projectWrapper = document.createElement('button');
+    projectWrapper.dataset.id = id;
     projectWrapper.textContent = title;
     return projectWrapper;
 }

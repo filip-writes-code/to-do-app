@@ -46,3 +46,12 @@ addTaskForm.addEventListener("formdata", (e) => {
     addTaskForm.reset();
     render();
 })
+
+//event listener for tasks !!!
+document.querySelector('.content').addEventListener ('click', (e) => {
+    if (e.target.id === 'delete') {
+        const id = e.target.closest('.task-wrapper').dataset.id;
+        taskList.removeItem(id)
+        render();
+    };
+})
