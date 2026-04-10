@@ -32,7 +32,7 @@ html {
     margin-bottom: 8px;
 }
 
-.projects-content button {
+.projects button {
     all: unset;
     cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import { projectList, taskList } from "./index.js";
+import { projectList, taskList, activeProject } from "./index.js";
 
 const contentDiv = document.querySelector('.content');
 const projectContentDiv = document.querySelector('.projects-content');
@@ -98,9 +98,16 @@ const addProjectToDropdown = (projectObj) => {
 
 export const renderTasks = () => {
     contentDiv.innerHTML = '';
-    taskList.items.forEach(task => {
+    if (activeProject === "ALL") {
+        taskList.items.forEach(task => {
         addTaskToDom(task)
-    });
+        })
+    } else {
+        taskList.items.filter((item) => item.id === activeProject)
+        .forEach(task => {
+        addTaskToDom(task)
+        })
+    }
 }
 
 export const renderProjects = () => {
