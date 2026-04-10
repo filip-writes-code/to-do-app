@@ -79,10 +79,23 @@ html {
     gap: 4px;
 }
 
-.actions button {
-    padding: 0 6px;
+button {
+    padding: 0 7px;
 }
 
 .completed {
     text-decoration: line-through;
+}
+
+.label-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-task-section {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
 }
