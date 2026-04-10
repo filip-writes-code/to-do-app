@@ -20,10 +20,10 @@
             <div class="projects menu-section">
                 <h3>My Projects</h3>
                 <p>All Projects</p>
-                <div class="projects-content"></div>
+                <div class="projects-content menu-section"></div>
             </div>
             <div class="add-project menu-section">
-                <form>    
+                <form id="add-project">    
                 <input type="text" id="add-project-title" placeholder="Project Name" required>
                     <button id="add-project-btn">Add Project</button>
                 </form>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="content"></div>
-            <div class="add-task-section">
+            <form class="add-task-section" id="add-task">
                 <div class="label-group">
                     <label for="add-task">Add Task: </label>
                     <input type="text" id="add-task">
@@ -58,7 +58,7 @@
                     </select>
                 </div>
                 <button id="add-task-btn">Add Task</button>
-            </div>
+            </form>
         </div>
     </div>
 </body>
