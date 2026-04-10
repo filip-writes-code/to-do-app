@@ -2,6 +2,7 @@ import { projectList, taskList } from "./index.js";
 
 const contentDiv = document.querySelector('.content');
 const projectContentDiv = document.querySelector('.projects-content');
+const projectDropdown = document.getElementById('project-id');
 
 const createTaskWrapperLayout = (task) => {
     const {
@@ -69,12 +70,27 @@ const createProjectWrapper = (projectObj) => {
     return projectWrapper;
 }
 
+const createProjectDropdownItem = (projectObj) => {
+    const {
+        id,
+        title,
+        completed} = projectObj;
+    const projectOption = document.createElement('option');
+    projectOption.value = id;
+    projectOption.textContent = title;
+    return projectOption;
+}
+
 const addTaskToDom = (taskObj) => {
     contentDiv.appendChild(createTaskWrapperLayout(taskObj));
 }
 
 const addProjectToDom = (projectObj) => {
     projectContentDiv.appendChild(createProjectWrapper(projectObj));
+}
+
+const addProjectToDropdown = (projectObj) => {
+    projectDropdown.appendChild(createProjectDropdownItem(projectObj));
 }
 
 export const renderTasks = () => {
@@ -86,8 +102,10 @@ export const renderTasks = () => {
 
 export const renderProjects = () => {
     projectContentDiv.innerHTML = '';
+    projectDropdown.innerHTML = '';
     projectList.items.forEach(project => {
         addProjectToDom(project);
+        addProjectToDropdown(project);
     })
 }
 
