@@ -19,7 +19,6 @@ const addProjectForm = document.querySelector('#add-project');
 
 addProjectForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(addProjectTitle.value)
     const newProject = new Project(addProjectTitle.value);
     projectList.addItem(newProject);
     addProjectTitle.value = null;
@@ -42,7 +41,7 @@ addTaskForm.addEventListener("formdata", (e) => {
         "add-priority" : addPriority,
         "project-id" : projectId,
     } = data;
-    const taskToAdd = new Task(addTaskTitle, null , addDate, addPriority, projectId);
+    const taskToAdd = new Task(addTaskTitle, null, addDate, addPriority, projectId);
     taskList.addItem(taskToAdd);
     addTaskForm.reset();
     render();
@@ -61,6 +60,7 @@ document.querySelector('.content').addEventListener ('click', (e) => {
 document.querySelector('.projects').addEventListener('click', (e) => {
     if (e.target.dataset.id) {
         activeProject = e.target.dataset.id;
+        console.log(activeProject)
         render();
     }
 

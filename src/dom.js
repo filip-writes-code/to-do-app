@@ -103,7 +103,7 @@ export const renderTasks = () => {
         addTaskToDom(task)
         })
     } else {
-        taskList.items.filter((item) => item.id === activeProject)
+        taskList.items.filter((item) => item.projectId === activeProject)
         .forEach(task => {
         addTaskToDom(task)
         })
