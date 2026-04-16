@@ -1,6 +1,7 @@
 import "./styles.css";
 import { Task, List, Project } from "./items.js";
 import { render } from "./dom.js";
+import { populateStorage } from "./localStorage.js";
 
 export const projectList = new List ();
 export const taskList = new List();
@@ -65,3 +66,5 @@ document.querySelector('.projects').addEventListener('click', (e) => {
     }
 
 })
+
+populateStorage();
