@@ -70,6 +70,7 @@ const createProjectWrapper = (projectObj) => {
     const projectWrapper = document.createElement('button');
     projectWrapper.dataset.id = id;
     projectWrapper.textContent = title;
+    if (activeProject === id) {projectWrapper.classList.add('active-project')}
     return projectWrapper;
 }
 

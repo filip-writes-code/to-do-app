@@ -62,7 +62,6 @@ document.querySelector('.content').addEventListener ('click', (e) => {
 document.querySelector('.projects').addEventListener('click', (e) => {
     if (e.target.dataset.id) {
         activeProject = e.target.dataset.id;
-        console.log(activeProject)
         render();
     }
 
