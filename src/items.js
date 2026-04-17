@@ -1,3 +1,5 @@
+import { populateStorage, readFromStorage } from "./localStorage.js";
+
 export class Task {
     constructor (title, description, dueDate, priority, projectId, completed = false, ) {
         this.id = crypto.randomUUID();
@@ -25,9 +27,22 @@ export class List {
 
     addItem(itemObj) {
         this.items.push(itemObj);
+        populateStorage();
     }
 
     removeItem(itemIdToRemove) {
         this.items = this.items.filter(item => item.id !== itemIdToRemove);
+        populateStorage();
+    }
+
+    populateFromStorage(storageKey) {
+        const storageInput = readFromStorage(storageKey) 
+        if (storageInput) {
+            this.items = storageInput;
+            return true;
+        } else {
+            console.log('No storage file: ' + storageKey);
+            return false;
+        }
     }
 }

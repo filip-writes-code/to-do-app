@@ -1,18 +1,19 @@
 import "./styles.css";
 import { Task, List, Project } from "./items.js";
 import { render } from "./dom.js";
-import { populateStorage } from "./localStorage.js";
 
 export const projectList = new List ();
 export const taskList = new List();
 export let activeProject = 'ALL';
 
-const defaultProject = new Project('My Tasks');
-const defaultTask = new Task('Welcome to TaskMaster', 'Hello there', '04/11/2026', 1, defaultProject.id, false);
 
-projectList.addItem(defaultProject);
-taskList.addItem(defaultTask);
-render();
+function serveDefaultTasks() {
+      const defaultProject = new Project('My Tasks');
+      const defaultTask = new Task('Welcome to TaskMaster', 'Hello there', '04/11/2026', 1, defaultProject.id, false);
+
+      projectList.addItem(defaultProject);
+      taskList.addItem(defaultTask);
+}
 
 //add Project Form
 const addProjectTitle = document.querySelector('#add-project-title');
@@ -67,4 +68,9 @@ document.querySelector('.projects').addEventListener('click', (e) => {
 
 })
 
-populateStorage();
+if (taskList.populateFromStorage('taskList') && projectList.populateFromStorage('projectList')) {
+    render();
+} else {
+    serveDefaultTasks();
+    render();
+}
