@@ -67,10 +67,27 @@ const createProjectWrapper = (projectObj) => {
         id,
         title,
         completed} = projectObj;
-    const projectWrapper = document.createElement('button');
+    const projectWrapper = document.createElement('div')
+    const projectButton = document.createElement('button');
+    
+    projectWrapper.classList.add('project-wrapper')
     projectWrapper.dataset.id = id;
-    projectWrapper.textContent = title;
-    if (activeProject === id) {projectWrapper.classList.add('active-project')}
+    
+    projectButton.textContent = title;
+    if (activeProject === id) {projectButton.classList.add('active-project')}
+    //actions section
+    const actionsDiv = document.createElement('div')
+    const deleteButton = document.createElement('button');
+
+    actionsDiv.classList.add('actions');
+    deleteButton.textContent = 'X';
+    deleteButton.id = 'delete'
+
+    actionsDiv.appendChild(deleteButton)
+    
+    //assemble everything
+    projectWrapper.appendChild(projectButton)
+    projectWrapper.appendChild(actionsDiv);
     return projectWrapper;
 }
 

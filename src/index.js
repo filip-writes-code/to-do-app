@@ -49,7 +49,7 @@ addTaskForm.addEventListener("formdata", (e) => {
     render();
 })
 
-//event listener for tasks !!!
+//event listener for tasks 
 document.querySelector('.content').addEventListener ('click', (e) => {
     if (e.target.id === 'delete') {
         const id = e.target.closest('.task-wrapper').dataset.id;
@@ -58,10 +58,19 @@ document.querySelector('.content').addEventListener ('click', (e) => {
     };
 })
 
+//event listener for projects 
+document.querySelector('.projects-content').addEventListener ('click', (e) => {
+    if (e.target.id === 'delete') {
+        const id = e.target.closest('.project-wrapper').dataset.id;
+        projectList.removeItem(id)
+        render();
+    };
+})
+
 //event listener for active project
 document.querySelector('.projects').addEventListener('click', (e) => {
-    if (e.target.dataset.id) {
-        activeProject = e.target.dataset.id;
+    if (e.target.closest('.project-wrapper').dataset.id) {
+        activeProject = e.target.closest('.project-wrapper').dataset.id;
         render();
     }
 
