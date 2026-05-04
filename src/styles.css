@@ -32,11 +32,16 @@ html {
     margin-bottom: 8px;
 }
 
+.sort-section {
+    align-items: start;
+}
+
 .project-wrapper {
     display: flex;
     justify-content: space-between;
 }
 
+.sort-section > button,
 .projects > button,
 .project-wrapper > button {
     background: none;

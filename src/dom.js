@@ -1,4 +1,5 @@
 import { projectList, taskList, activeProject } from "./index.js";
+import { format } from "date-fns";
 
 const contentDiv = document.querySelector('.content');
 const projectContentDiv = document.querySelector('.projects-content');
@@ -45,7 +46,7 @@ const createTaskWrapperLayout = (task) => {
     //populate text
     titleDiv.innerText = title;
     projectIdDiv.innerText = projectList.getItemNameFromId(projectId);
-    dueDateDiv.innerText = dueDate;
+    dueDateDiv.innerText = format(dueDate, 'MM/dd/yyyy');
     priorityDiv.innerText = priority;
     //assemble the task card
     taskWrapper.appendChild(taskDiv);
@@ -55,7 +56,7 @@ const createTaskWrapperLayout = (task) => {
     taskDiv.appendChild(dueDateDiv);
     taskDiv.appendChild(priorityDiv);
     taskDiv.appendChild(actionsDiv);
-    actionsDiv.appendChild(editButton);
+    // actionsDiv.appendChild(editButton);
     actionsDiv.appendChild(deleteButton);
 
     if (completed) {

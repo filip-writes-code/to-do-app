@@ -1,6 +1,7 @@
 import "./styles.css";
 import { Task, List, Project } from "./items.js";
 import { render } from "./dom.js";
+import { parse } from "date-fns";
 
 export const projectList = new List ();
 export const taskList = new List();
@@ -9,7 +10,8 @@ export let activeProject = 'ALL';
 
 function serveDefaultTasks() {
       const defaultProject = new Project('My Tasks');
-      const defaultTask = new Task('Welcome to TaskMaster', 'Hello there', '04/11/2026', 1, defaultProject.id, false);
+      const defaultTask = new Task('Welcome to TaskMaster', 'Hello there', new Date(), 1, defaultProject.id, false);
+      console.log(new Date())
 
       projectList.addItem(defaultProject);
       taskList.addItem(defaultTask);
@@ -43,7 +45,12 @@ addTaskForm.addEventListener("formdata", (e) => {
         "add-priority" : addPriority,
         "project-id" : projectId,
     } = data;
-    const taskToAdd = new Task(addTaskTitle, null, addDate, addPriority, projectId);
+
+    let addDateProper;
+    if (addDate) {
+         addDateProper = parse(addDate, 'yyyy-MM-dd', new Date());
+    }
+    const taskToAdd = new Task(addTaskTitle, null, addDateProper, addPriority, projectId);
     taskList.addItem(taskToAdd);
     addTaskForm.reset();
     render();
