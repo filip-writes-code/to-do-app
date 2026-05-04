@@ -62,14 +62,14 @@ document.querySelector('.content').addEventListener ('click', (e) => {
 document.querySelector('.projects-content').addEventListener ('click', (e) => {
     if (e.target.id === 'delete') {
         const id = e.target.closest('.project-wrapper').dataset.id;
-        projectList.removeItem(id)
+        projectList.removeItem(id);
         render();
     };
 })
 
 //event listener for active project
 document.querySelector('.projects').addEventListener('click', (e) => {
-    if (e.target.closest('.project-wrapper').dataset.id) {
+    if (e.target.id === 'project-title') {
         activeProject = e.target.closest('.project-wrapper').dataset.id;
         render();
     }

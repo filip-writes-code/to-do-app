@@ -20,12 +20,14 @@ const createTaskWrapperLayout = (task) => {
     //create all divs
     const taskDiv = document.createElement('div')
     const titleDiv = document.createElement('div')
+    const projectIdDiv = document.createElement('div')
     const dueDateDiv = document.createElement('div')
     const priorityDiv = document.createElement('div')
     const actionsDiv = document.createElement('div')
     //assign classes to divs
     taskDiv.classList.add('task');
     titleDiv.classList.add('title');
+    projectIdDiv.classList.add('project-id')
     dueDateDiv.classList.add('due-date');
     priorityDiv.classList.add('priority');
     actionsDiv.classList.add('actions');
@@ -42,12 +44,14 @@ const createTaskWrapperLayout = (task) => {
     deleteButton.id = "delete"
     //populate text
     titleDiv.innerText = title;
+    projectIdDiv.innerText = projectList.getItemNameFromId(projectId);
     dueDateDiv.innerText = dueDate;
     priorityDiv.innerText = priority;
     //assemble the task card
     taskWrapper.appendChild(taskDiv);
     taskDiv.appendChild(checkbox);
     taskDiv.appendChild(titleDiv);
+    taskDiv.appendChild(projectIdDiv);
     taskDiv.appendChild(dueDateDiv);
     taskDiv.appendChild(priorityDiv);
     taskDiv.appendChild(actionsDiv);
@@ -73,6 +77,7 @@ const createProjectWrapper = (projectObj) => {
     projectWrapper.classList.add('project-wrapper')
     projectWrapper.dataset.id = id;
     
+    projectButton.id = 'project-title'
     projectButton.textContent = title;
     if (activeProject === id) {projectButton.classList.add('active-project')}
     //actions section
@@ -91,6 +96,25 @@ const createProjectWrapper = (projectObj) => {
     return projectWrapper;
 }
 
+const createAllProjectsWrapper = () => {
+    const id = "ALL";
+    const title = "All Projects";
+    const projectWrapper = document.createElement('div')
+    const projectButton = document.createElement('button');
+    
+    projectWrapper.classList.add('project-wrapper')
+    projectWrapper.dataset.id = id;
+    
+    projectButton.id = 'project-title'
+    projectButton.textContent = title;
+    if (activeProject === id) {projectButton.classList.add('active-project')}
+    //actions section
+    
+    //assemble everything
+    projectWrapper.appendChild(projectButton)
+    return projectWrapper;
+}
+
 const createProjectDropdownItem = (projectObj) => {
     const {
         id,
@@ -104,6 +128,10 @@ const createProjectDropdownItem = (projectObj) => {
 
 const addTaskToDom = (taskObj) => {
     contentDiv.appendChild(createTaskWrapperLayout(taskObj));
+}
+
+const addAllProjectsToDom = (projectObj) => {
+    projectContentDiv.appendChild(createAllProjectsWrapper());
 }
 
 const addProjectToDom = (projectObj) => {
@@ -131,6 +159,7 @@ export const renderTasks = () => {
 export const renderProjects = () => {
     projectContentDiv.innerHTML = '';
     projectDropdown.innerHTML = '';
+    addAllProjectsToDom();
     projectList.items.forEach(project => {
         addProjectToDom(project);
         addProjectToDropdown(project);

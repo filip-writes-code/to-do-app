@@ -35,6 +35,15 @@ export class List {
         populateStorage();
     }
 
+    getItemNameFromId(id) {
+        const projectsArray = this.items.filter(item => item.id === id);
+        if (projectsArray.length) {
+            return projectsArray[0].title;
+        } else {
+            return "";
+        }
+    }
+
     populateFromStorage(storageKey) {
         const storageInput = readFromStorage(storageKey) 
         if (storageInput) {
